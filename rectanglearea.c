@@ -11,9 +11,9 @@ int main() {
     printf("length: ");
     scanf("%d", &length);
 
-    int area = width * length;  // Declare and compute the area here.
+    int areaOfrectangle = width * length;  // Declare and compute the area here.
 
-    printf("Area : %d\n", area);
+    printf("area : %d\n", areaOfrectangle );
 
     return 0;
 }
