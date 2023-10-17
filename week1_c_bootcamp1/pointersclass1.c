@@ -1,10 +1,9 @@
 
-# include <stdio.h>
-
+#include <stdio.h>
 int main()
 {
-    int a[10] 
- int count;
+int a [10];
+int count;
 //populate an array
 for (count = 0; count < 10 ; count++)
 {
