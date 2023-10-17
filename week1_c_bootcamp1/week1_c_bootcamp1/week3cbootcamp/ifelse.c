@@ -1,9 +1,9 @@
 
 #include <stdio.h>
-int main ()
+int main()
 {
     int mark = 40; //initialise a mark that you have given (no user input)
-    if ( mark => 40)  //this sets a  condition 
+    if ( mark >= 40)  //this sets a  condition 
     {
         printf ("This mark  of %d is a pass", mark); //prints out if the if statement is true
     }
@@ -14,3 +14,5 @@ int main ()
     return 0;
 
 } 
+
+

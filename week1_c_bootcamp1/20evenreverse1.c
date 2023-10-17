@@ -5,7 +5,7 @@ int main () {
 
     printf("Even numbers from 20 to 0:\n");
 
-    for (a=20; a >= 0; a-=2) //using for loop
+    for (a=20; a >= 0; a-=2) //using FOR loop
     
         printf("a is equal to %d\n", a);
 
