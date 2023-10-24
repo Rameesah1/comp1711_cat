@@ -4,7 +4,7 @@ int main () {
     int mark;
     
     printf("Enter mark here: \n");
-    scanf("%d", &mark);
+    scanf("%d", &mark);    //user input required
 
 if( mark == 0) {
     printf("The mark %d is zero\n", mark);
