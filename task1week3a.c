@@ -11,7 +11,7 @@ perror("");
 return 1;
 }
 
-   int squares;   //assign the variables
+   int squares;   //declare the variables
    int num_lines;
 
     scanf("%d\n", &num_lines);  //user input
@@ -25,6 +25,7 @@ return 1;
  fclose(file);
  return 0;
 }
+
 
 
 
