@@ -10,7 +10,7 @@ if (file == NULL){
 
 int number, num_lines = 10;
 printf("Type %d numbers:\n", num_lines); // prints the value of int num_lines
-for (int i = 0; i < num_lines; i++) {  //or you can do i<11 and initialise i to 1... you can baso use numbers instead
+for (int i = 0; i < num_lines; i+=2) {  //or you can do i<11 and initialise i to 1... you can baso use numbers instead
 scanf("%d", &number);
 fprintf(file, "%d\n", number);
 }
