@@ -45,7 +45,7 @@ int main()
 {
 
 char filename [] = "FitnessData_2023.csv";
-FILE *file = fopen(filename, "w");
+FILE *file = fopen(filename, "r");
 if (file == NULL) {
 perror("");
 return 1;
@@ -65,7 +65,7 @@ int records = 0; //tracks number of records in the file
                   &Fitnessdata[records].steps);
     if (read == 3 ) records++; 
    
-    if (read != 4 && !feof(file))
+    if (read != 3 && !feof(file))
     {
       printf("File format incorrect.\n");
       return 1;

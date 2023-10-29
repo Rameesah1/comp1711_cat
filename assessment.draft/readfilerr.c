@@ -38,44 +38,43 @@ void tokeniseRecord(const char *input, const char *delimiter,
     
     // Free the duplicated string
     free(inputCopy);
+    }
 
-}
-int main() {
+    int main() {
     char filename[] = "FitnessData_2023.csv";
-    FILE *file = fopen(filename, "r");  // "r" mode for reading
+    FILE *file = fopen(filename, "r"); // "r" is the mode for reading
     if (file == NULL) {
         perror("Error opening file");
         return 1;
     }
 
-    FITNESS_DATA Fitnessdata[61]; // Array to store records
-    int records = 0; // Number of successful records read
+    FITNESS_DATA Fitnessdata[61]; // Can store up to 61 records from the file
+    int records = 0; // Tracks the number of records in the file
 
-    // Reading file content
-    while (fscanf(file, "%10[^,],%5[^,],%d\n", Fitnessdata[records].date, Fitnessdata[records].time, &Fitnessdata[records].steps) == 3) {
-        records++;
-        if (records >= 61) {
-            printf("Reached maximum storage capacity.\n");
-            break;
-        }
+    // Read each line of the file and store each record into the Fitness_Data array
+    while(records < 61 && fscanf(file, "%10[^,],%5[^,],%d\n", 
+                                 Fitnessdata[records].date, 
+                                 Fitnessdata[records].time, 
+                                 &Fitnessdata[records].steps) == 3) {
+        records++; 
     }
 
-    fclose(file);  // Close the file after reading
+    fclose(file); // Always close the file handle once you're done
 
-    if (records == 0) {
-        printf("No records could be read, or file is empty.\n");
+    if(records == 0) {
+        printf("No records found or file format incorrect.\n");
         return 1;
     }
 
-    // Printing the number of records
+    // Print out the number of records read
     printf("\n%d records read.\n\n", records);
 
-    // Printing each record
+    // Print out each of the records that was read
     for (int i = 0; i < records; i++) {
-        printf("%s %s %d\n", Fitnessdata[i].date, 
-                             Fitnessdata[i].time, 
-                             Fitnessdata[i].steps);
+        printf("%s %s %d\n", Fitnessdata[i].date,
+                              Fitnessdata[i].time, 
+                              Fitnessdata[i].steps);
     }
 
     return 0;
-}
+    }
