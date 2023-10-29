@@ -4,18 +4,14 @@
 
 // Define an appropriate struct
 typedef struct {
-	char date[11];  //string
-	char time[6];   //string
-	int steps;      //integer
+    char date[11];  // string
+    char time[6];   // string
+    int steps;      // integer
 } FITNESS_DATA;
-
-// Define any additional variables here
-
-
 
 // This is your helper function. Do not change it in any way.
 // Inputs: character array representing a row; the delimiter character
-// Ouputs: date character array; time character array; steps character array
+// Outputs: date character array; time character array; steps character array
 void tokeniseRecord(const char *input, const char *delimiter,
                     char *date, char *time, char *steps) {
     // Create a copy of the input string as strtok modifies the string
@@ -23,7 +19,8 @@ void tokeniseRecord(const char *input, const char *delimiter,
     
     // Tokenize the copied string
     char *token = strtok(inputCopy, delimiter);
-    if (token != NULL) {        strcpy(date, token);
+    if (token != NULL) {
+        strcpy(date, token);
     }
     
     token = strtok(NULL, delimiter);
@@ -38,9 +35,10 @@ void tokeniseRecord(const char *input, const char *delimiter,
     
     // Free the duplicated string
     free(inputCopy);
-    }
+}
 
-    int main() {
+// Main function
+int main() {
     char filename[] = "FitnessData_2023.csv";
     FILE *file = fopen(filename, "r"); // "r" is the mode for reading
     if (file == NULL) {
@@ -71,10 +69,8 @@ void tokeniseRecord(const char *input, const char *delimiter,
 
     // Print out each of the records that was read
     for (int i = 0; i < records; i++) {
-        printf("%s %s %d\n", Fitnessdata[i].date,
-                              Fitnessdata[i].time, 
-                              Fitnessdata[i].steps);
+        printf("%s %s %d\n", Fitnessdata[i].date, Fitnessdata[i].time, Fitnessdata[i].steps);
     }
 
     return 0;
-    }
+}
