@@ -49,11 +49,11 @@ int main() {
     int records = 0; // Tracks the number of records in the file
 
     // Read each line of the file and store each record into the Fitness_Data array
-    while(records < 61 && fscanf(file, "%11[^,],%6[^,],%d\n", 
+    for (records = 0;  records < 61 && fscanf(file, "%11[^,],%6[^,],%d\n", 
                                  Fitnessdata[records].date, 
                                  Fitnessdata[records].time, 
-                                 &Fitnessdata[records].steps) == 3) {
-        records++;  // increment the number of records
+                                 &Fitnessdata[records].steps) == 3; records++) {
+      
     }
 
     fclose(file); // Always close the file handle once you're done with it.
