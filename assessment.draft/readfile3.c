@@ -45,9 +45,8 @@ int main() {
         return 1;
     }
 
-    FITNESS_DATA Fitnessdata[61]; // Can store up to 61 records from the file
-    int records = 0; // Tracks the number of records in the file
-
+    FITNESS_DATA Fitnessdata[60]; // Can store up to 61 records from the file
+    int records = 0;
     // Read each line of the file and store each record into the Fitness_Data array
     for (records = 0;  records < 61 && fscanf(file, "%11[^,],%6[^,],%d\n", 
                                  Fitnessdata[records].date, 
@@ -68,14 +67,15 @@ int main() {
     printf("Number of records in file: %d\n", records);
 
     // Print the first three records in the desired format
-    for (int i = 0; i < 3; i++) {  // Only the first three records
+    int storage = 0 //or you can skip this step and assign the int storage to zero in the for loop
+    for (storage = 0; storage < 3; storage++) {  // Only the first three records
         printf("%s/%s/%d\n", 
-               Fitnessdata[i].date, 
-               Fitnessdata[i].time, 
-               Fitnessdata[i].steps);
+               Fitnessdata[storage].date, 
+               Fitnessdata[storage].time, 
+               Fitnessdata[storage].steps);
     }
 
     // You can continue with other processing here
 
-    return 0;  // Successful execution
+    return 0;  
 }
