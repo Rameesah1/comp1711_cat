@@ -48,7 +48,7 @@ int main() {
     FITNESS_DATA Fitnessdata[61]; // Can store up to 60 records from the file
     int records = 0;
 
-    for (records = 0;  records < 60 && fscanf(file, "%11[^,],%6[^,],%d\n",   //// This reads each line of the file and stores each record into the Fitness_Data array
+    for (records = 0;  records < 60 && fscanf(file, "%11[^,],%6[^,],%d\n",   // This reads each line of the file and stores each record into the Fitness_Data array
                                  Fitnessdata[records].date, 
                                  Fitnessdata[records].time, 
                                  &Fitnessdata[records].steps) == 3; records++) {  //& used for steps as this is an integer
@@ -74,8 +74,6 @@ int main() {
                Fitnessdata[storage].time, 
                Fitnessdata[storage].steps);
     }
-
-    // You can continue with other processing here
 
     return 0;  
 }
