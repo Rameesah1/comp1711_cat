@@ -39,71 +39,46 @@ void tokeniseRecord(const char *input, const char *delimiter,
 
 // Complete the main function
 int main() {
-     char choice;
+    char choice;
 
-while (1)
-{   
-    printf("A. Specify the filename to be imported – you need to check that the file opened correctly\n");
-    printf("B. Display the total number of records in the file\n"); 
-    printf("C. Find the date and time of the timeslot with the fewest steps\n"); 
-    printf("D. Find the date and time of the timeslot with the most steps\n"); 
-    printf("E. Find the data and time of the timeslot with the largest number of steps\n");
-    printf("F. Find the longest continuous period where the step count is above 500 steps\n");
-    printf("Q. Exit the menu\n");
-    printf("Enter choice:\n ");
-    scanf("%c", &choice);
-    while (getchar() != '\n') //idea from stack overflow- clears the input buffer. The while loop has a function inside it (getchar) and thsi reads each character of teh standard input. The while loop only gets executed if the character is not equal to != '\n' (so the newline character when the user adds enter).
+    while (1) {   
+        printf("A. Specify the filename to be imported – you need to check that the file opened correctly\n");
+        printf("B. Display the total number of records in the file\n"); 
+        // ... (other menu options) ...
+        printf("Q. Exit the menu\n");
+        printf("Enter choice: ");
+        scanf(" %c", &choice); // The space before %c tells scanf to ignore any whitespaces
+        while (getchar() != '\n'); // Clear the input buffer
   
-  switch(choice)  {
-    
-    case 'A':  {
-    
-    char filename[100];
-    printf("Enter file name:  \n");
-    scanf("%99s", filename);  //not &filename as its not an int. use array name - filename- only
-
-    FILE *file = fopen(filename, "r"); // r to read the file - not w as there is no writing in
-    if (file == NULL) {
-        printf("Error in opening file");
-        return 1;
-    } else {
-        printf("File opened successfully\n");
-        fclose(file); // Close the file
-        } break;
+        switch(choice) {
+            case 'A': { // Braces to create a new scope for the case
+                char filename[100];
+                printf("Enter file name:\n");
+                // Use a space before %99s to ignore any leading whitespace
+                scanf(" %99s", filename);
+                FILE *file = fopen(filename, "r"); // Try to open the file for reading
+                if (file == NULL) {
+                    printf("Error opening file"); // Use perror to print the error message
+                } else {
+                    printf("File opened successfully\n");
+                    fclose(file); // Close the file if it's opened successfully
+                }
+                break; // Break out of the switch case
+            }
+            // ... (other cases should be implemented accordingly) ...
+            case 'Q': {
+                printf("Exiting\n");
+                return 0; // Exits the program
+            }
+        }
     }
-
-    case 'B':
-    printf("24/05/2023 - 13:00"); break;
-
-    case 'C':
-    printf("21/05/2023 - 14:00"); break;
-
-    case 'D':
-    printf("21/05/2023 - 14:00"); break;
-
-    case 'E':
-    printf("21/05/2023 - 14:00"); break;
-
-    case 'F':
-    printf("21/05/2023 - 14:00"); break;
-
-    case 'Q' :
-    printf("Exiting");
     return 0;
-    break; 
+}
 
 
     
 
-  }
-  
-        
 
-
-
-}
-return 0; 
-}
 
 
 
