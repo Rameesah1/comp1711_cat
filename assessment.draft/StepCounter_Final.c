@@ -41,21 +41,21 @@ void tokeniseRecord(const char *input, const char *delimiter,
 int main() {
      int choice, i;
 
-while (1)
+while ()
 {   
-    printf("A. Specify the filename to be imported – you need to check that the file opened correctly");
+    printf("A. Specify the filename to be imported – you need to check that the file opened correctly\n");
     printf("B. Display the total number of records in the file\n"); 
     printf("C. Find the date and time of the timeslot with the fewest steps\n"); 
-    printf("D. Find the date and time of the timeslot with the most steps\n\n\n"); 
-    printf("E. Find the data and time of the timeslot with the largest number of steps");
-    printf("F. Find the longest continuous period where the step count is above 500 steps");
+    printf("D. Find the date and time of the timeslot with the most steps\n"); 
+    printf("E. Find the data and time of the timeslot with the largest number of steps\n");
+    printf("F. Find the longest continuous period where the step count is above 500 steps\n");
     printf("Q. Exit");
-    printf("Enter choice: ");
-    scanf("%d", &choice );
+    printf("Enter choice: "\n);
+    scanf("%c", &choice \n);
   
   switch(choice)  {
     
-    case 1:
+    case A:
     
     char filename[] = "FitnessData_2023.csv";
     FILE *file = fopen(filename, "r"); // r to read the file - not w as there is no writing in
@@ -65,22 +65,22 @@ while (1)
     }
     
 
-    case 2:
+    case B:
     printf("24/05/2023 - 13:00"); break;
 
-    case 3:
+    case C:
     printf("21/05/2023 - 14:00"); break;
 
-    case 4:
+    case D:
     printf("21/05/2023 - 14:00"); break;
 
-    case 5:
+    case E:
     printf("21/05/2023 - 14:00"); break;
 
-    case 6:
+    case F:
     printf("21/05/2023 - 14:00"); break;
 
-    case 7:
+    case Q :
     printf("21/05/2023 - 14:00"); break;
 
 
