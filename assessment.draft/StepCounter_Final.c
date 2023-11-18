@@ -40,7 +40,7 @@ void tokeniseRecord(const char *input, const char *delimiter,
 // Complete the main function
 int main() {
     char choice;
-    char str2[20]= "StepCounter_Final.c";
+    char str2[21]= "FitnessData_2023.csv";
     int value;  //will be used for strcmp function to check if the value is the same. 
 
 
@@ -61,11 +61,13 @@ int main() {
                 
                 value = strcmp(filename, str2) ;
                 if (value == 0) {
+    
                 FILE *file = fopen(filename, "r"); // Try to open the file for reading
                 if (file == NULL) {
-                    printf("Errir opening file"); // Use perror to print the error message
+                    printf("Error opening file"); // Use perror to print the error message
                 } else {
                     printf("File opened successfully\n");
+                    printf("File successfully loaded\n");
                     fclose(file); // Close the file if it's opened successfully
                 }
                 }
