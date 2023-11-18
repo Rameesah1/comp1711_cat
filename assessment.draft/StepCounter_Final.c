@@ -40,6 +40,9 @@ void tokeniseRecord(const char *input, const char *delimiter,
 // Complete the main function
 int main() {
     char choice;
+    char str2[20]= "StepCounter_Final.c";
+    int value;
+
 
     while (1) {   
         printf("A. Specify the filename to be imported – you need to check that the file opened correctly\n");
@@ -52,17 +55,26 @@ int main() {
   
         switch(choice) {
             case 'A': { // Braces to create a new scope for the case
-                char filename[100];
+                char filename[20];
                 printf("Enter file name:\n");
-                // Use a space before %99s to ignore any leading whitespace
-                scanf(" %99s", filename);
+                scanf(" %99s", filename); // Use a space before %99s to ignore any leading whitespace
+                
+                value = strcmp(filename, str2) ;
+                if (value == 0) {
                 FILE *file = fopen(filename, "r"); // Try to open the file for reading
                 if (file == NULL) {
-                    printf("Error opening file"); // Use perror to print the error message
+                    printf("Errir opening file"); // Use perror to print the error message
                 } else {
                     printf("File opened successfully\n");
                     fclose(file); // Close the file if it's opened successfully
                 }
+                }
+                else { 
+                    printf("Incorrect file name entered\n");
+
+                }
+                
+
                 break; // Break out of the switch case
             }
             // ... (other cases should be implemented accordingly) ...
