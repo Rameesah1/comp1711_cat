@@ -41,7 +41,7 @@ void tokeniseRecord(const char *input, const char *delimiter,
 int main() {
     char choice;
     char str2[20]= "StepCounter_Final.c";
-    int value;
+    int value;  //will be used for strcmp function to check if the value is the same. 
 
 
     while (1) {   
