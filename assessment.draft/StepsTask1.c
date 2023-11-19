@@ -50,7 +50,7 @@ int main() {
     char date[11], time[6], steps[10];
     int records=0;
 
-    while (fgets(line_buffer, sizeof(line_buffer), file) != NULL && records < 60) {
+    while (fgets(line_buffer, sizeof(line_buffer), file) != NULL && records < 60) {   //sizeof(line_buffer) helps prevent buffer overflow- better than writing 100
     tokeniseRecord(line_buffer, "," date, time, steps);
 
     strcpy(Fitnessdata[records].date, date);
