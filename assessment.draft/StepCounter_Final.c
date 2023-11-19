@@ -40,7 +40,7 @@ void tokeniseRecord(const char *input, const char *delimiter,
 // Complete the main function
 int main() {
     char choice;
-    char str2[21]= "FitnessData_2023.csv";
+    char actualfilename[21]= "FitnessData_2023.csv";
     int value;  //will be used for strcmp function to check if the value is the same. 
 
 
@@ -59,10 +59,10 @@ int main() {
                 printf("Enter file name:\n");
                 scanf(" %99s", filename); // Use a space before %99s to ignore any leading whitespace
                 
-                value = strcmp(filename, str2) ;
+                value = strcmp(filename, actualfilename) ;
                 if (value == 0) {
     
-                FILE *file = fopen(filename, "r"); // Try to open the file for reading
+                FILE *file = fopen(actualfilename, "r"); // Try to open the file for reading
                 if (file == NULL) {
                     printf("Error opening file"); // Use perror to print the error message
                 } else {
@@ -80,11 +80,17 @@ int main() {
                 break; // Break out of the switch case
             }
 
-            case 'B' : 
+            case 'B' :  {
                 FITNESS_DATA Fitnessdata[60]; // Can store up to 60 records from the file
                 char line_buffer[100];
                 char date[11], time[6], steps[10];
                 int records=0;
+                
+                FILE *file = fopen(actualfilename, "r"); 
+                if (file == NULL) {
+                printf("Error opening file\n"); // Use perror to print the error message
+                break;
+                }
 
                 while (fgets(line_buffer, sizeof(line_buffer), file) != NULL && records < 60) {   //sizeof(line_buffer) helps prevent buffer overflow- better than writing 100
                 tokeniseRecord(line_buffer, "," , date, time, steps);
@@ -96,6 +102,12 @@ int main() {
                 Fitnessdata[records].steps = intsteps;  
 
                 records++;
+                }
+                fclose(file);
+
+        
+                printf("Total number of records: %d\n", records); 
+    
                 }
                 break;
         
