@@ -51,7 +51,7 @@ int main() {
     int records=0;
 
     while (fgets(line_buffer, sizeof(line_buffer), file) != NULL && records < 60) {
-    tokeniseRecord(line_buffer, ",", date, time, steps);
+    tokeniseRecord(line_buffer, "," date, time, steps);
 
     strcpy(Fitnessdata[records].date, date);
     strcpy(Fitnessdata[records].time, time);
