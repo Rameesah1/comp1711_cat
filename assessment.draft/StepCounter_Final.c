@@ -79,6 +79,26 @@ int main() {
 
                 break; // Break out of the switch case
             }
+
+            case 'B' : 
+                FITNESS_DATA Fitnessdata[60]; // Can store up to 60 records from the file
+                char line_buffer[100];
+                char date[11], time[6], steps[10];
+                int records=0;
+
+                while (fgets(line_buffer, sizeof(line_buffer), file) != NULL && records < 60) {   //sizeof(line_buffer) helps prevent buffer overflow- better than writing 100
+                tokeniseRecord(line_buffer, "," , date, time, steps);
+
+                strcpy(Fitnessdata[records].date, date);
+                strcpy(Fitnessdata[records].time, time);
+                int intsteps;
+                intsteps = atoi(steps);  //converts the string- steps into an integer
+                Fitnessdata[records].steps = intsteps;  
+
+                records++;
+                }
+                break;
+        
             // ... (other cases should be implemented accordingly) ...
             case 'Q': {
                 printf("Exiting\n");
