@@ -47,6 +47,7 @@ int main() {
     while (1) {   
         printf("A. Specify the filename to be imported – you need to check that the file opened correctly\n");
         printf("B. Display the total number of records in the file\n"); 
+        printf("C. Find the date and time of the timeslot with the fewest steps\n");
         // ... (other menu options) ...
         printf("Q. Exit the menu\n");
         printf("Enter choice: ");
@@ -110,6 +111,29 @@ int main() {
     
                 }
                 break;
+
+            case 'C': {
+
+                /*So you want the min  value of field- steps value but you want the date and time to be the output
+                e.g max steps
+                 int maxSteps = steps[0];
+                 int i;
+
+                                                      for (i=1; i<60; i++) {
+                                                      if(maxSteps < steps[i])
+                //then make array get new value so    maxSteps = steps [i];  (updates the value) 
+                                                      }
+                                                      printf("The maximum value of the steps is: %d, maxSteps");
+                 }
+
+            
+            
+                
+                
+                
+                
+                */
+            }
         
             // ... (other cases should be implemented accordingly) ...
             case 'Q': {
