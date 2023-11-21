@@ -123,20 +123,22 @@ int main() {
                  int maxSteps = Fitnessdata[0].steps;   
                  int i;
 
-                    for (i = 0; i < records; i++) {
+                    //for (i = 0; i < records; i++) {
+                    while (i = 0; i < records;) {    
                     if(maxSteps > Fitnessdata[i].steps) {   //then make array get new value so
-                    maxSteps = Fitnessdata[i].steps;  //(updates the value)  
-                    }
-                 }
-            
-                    printf("The minimum value of the steps is: %d\n", maxSteps);
-                 } else {
-                    printf("No data available to find maximum steps.\n");
-                 }
+                    maxSteps = Fitnessdata[i].steps;  //(updates the value) 
+                    } 
 
+                    printf("The date and time of the fewest steps: %s, %s", Fitnessdata[i].date, Fitnessdata[i].time);
+
+                    
+                    }
                     break;
-            }
+                 }
             
+            
+    
+    
                 
     
         
