@@ -42,10 +42,13 @@ int main() {
     char choice;
     char actualfilename[21]= "FitnessData_2023.csv";
     int value;  //will be used for strcmp function to check if the value is the same. 
+    FITNESS_DATA Fitnessdata[60];
+                                   // Global declaration of the Fitnessdata array
+    int records = 0;
 
 
     while (1) {   
-        printf("A. Specify the filename to be imported – you need to check that the file opened correctly\n");
+        printf("\nA. Specify the filename to be imported – you need to check that the file opened correctly\n");
         printf("B. Display the total number of records in the file\n"); 
         printf("C. Find the date and time of the timeslot with the fewest steps\n");
         // ... (other menu options) ...
@@ -82,10 +85,10 @@ int main() {
             }
 
             case 'B' :  {
-                FITNESS_DATA Fitnessdata[60]; // Can store up to 60 records from the file
+                //FITNESS_DATA Fitnessdata[60]; // Can store up to 60 records from the file
                 char line_buffer[100];
                 char date[11], time[6], steps[10];
-                int records=0;
+                //int records=0;
                 
                 FILE *file = fopen(actualfilename, "r"); 
                 if (file == NULL) {
@@ -115,25 +118,27 @@ int main() {
             case 'C': {
 
                 /*So you want the min  value of field- steps value but you want the date and time to be the output
-                e.g max steps
-                 int maxSteps = steps[0];
+                e.g max steps */
+                 if (records > 0) {
+                 int maxSteps = Fitnessdata[0].steps;   
                  int i;
 
-                                                      for (i=1; i<60; i++) {
-                                                      if(maxSteps < steps[i])
-                //then make array get new value so    maxSteps = steps [i];  (updates the value) 
-                                                      }
-                                                      printf("The maximum value of the steps is: %d, maxSteps");
+                    for (i = 0; i < records; i++) {
+                    if(maxSteps < Fitnessdata[i].steps) {   //then make array get new value so
+                    maxSteps = Fitnessdata[i].steps;  //(updates the value)  
+                    }
+                 }
+            
+                    printf("The maximum value of the steps is: %d\n", maxSteps);
+                 } else {
+                    printf("No data available to find maximum steps.\n");
                  }
 
-            
-            
-                
-                
-                
-                
-                */
+                    break;
             }
+            
+                
+    
         
             // ... (other cases should be implemented accordingly) ...
             case 'Q': {
