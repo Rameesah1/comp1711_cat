@@ -124,12 +124,12 @@ int main() {
                  int i;
 
                     for (i = 0; i < records; i++) {
-                    if(maxSteps < Fitnessdata[i].steps) {   //then make array get new value so
+                    if(maxSteps > Fitnessdata[i].steps) {   //then make array get new value so
                     maxSteps = Fitnessdata[i].steps;  //(updates the value)  
                     }
                  }
             
-                    printf("The maximum value of the steps is: %d\n", maxSteps);
+                    printf("The minimum value of the steps is: %d\n", maxSteps);
                  } else {
                     printf("No data available to find maximum steps.\n");
                  }
@@ -140,7 +140,7 @@ int main() {
                 
     
         
-            // ... (other cases should be implemented accordingly) ...
+            //other cases..
             case 'Q': {
                 printf("Exiting\n");
                 return 0; // Exits the program
