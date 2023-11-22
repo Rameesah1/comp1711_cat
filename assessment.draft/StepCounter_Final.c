@@ -120,21 +120,23 @@ int main() {
                 /*So you want the min  value of field- steps value but you want the date and time to be the output
                 e.g max steps */
                  if (records > 0) {
-                 int maxSteps = Fitnessdata[0].steps;   
+                 int minSteps = Fitnessdata[0].steps;   
                  int i;
 
                     //for (i = 0; i < records; i++) {
-                    while (i = 0; i < records;) {    
-                    if(maxSteps > Fitnessdata[i].steps) {   //then make array get new value so
-                    maxSteps = Fitnessdata[i].steps;  //(updates the value) 
-                    } 
+                   for (i = 0; i < records; i++) {    
+                    if(minSteps > Fitnessdata[i].steps) {   //then make array get new value so
+                    minSteps = Fitnessdata[i].steps;  //(updates the value) 
+                    minSteps = i;
+                    }
+                   }
 
-                    printf("The date and time of the fewest steps: %s, %s", Fitnessdata[i].date, Fitnessdata[i].time);
+                    printf("\nThe date and time of the fewest steps: %s, %s\n", Fitnessdata[i].date, Fitnessdata[i].time);
 
                     
                     }
                     break;
-                 }
+                 
             
             
     
@@ -148,9 +150,13 @@ int main() {
                 return 0; // Exits the program
             }
         }
-    }
+        }
     return 0;
+    
 }
+    }
+    
+
 
 
     
