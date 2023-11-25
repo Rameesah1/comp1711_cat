@@ -61,7 +61,7 @@ int main() {
             case 'A': { // Braces to create a new scope for the case
                 char filename[20];
                 printf("Enter file name:\n");
-                scanf(" %99s", filename); // Use a space before %99s to ignore any leading whitespace
+                scanf(" %20s", filename); // Use a space before %99s to ignore any leading whitespace
                 
                 value = strcmp(filename, actualfilename) ;
                 if (value == 0) {
@@ -121,20 +121,21 @@ int main() {
                 e.g max steps */
                  if (records > 0) {
                  int minSteps = Fitnessdata[0].steps;   
-                 int i;
+                 int minIndex = 0;
+                 
 
                     //for (i = 0; i < records; i++) {
-                   for (i = 0; i < records; i++) {    
+                   for (int i = 1; i < records; i++) {    
                     if(minSteps > Fitnessdata[i].steps) {   //then make array get new value so
                     minSteps = Fitnessdata[i].steps;  //(updates the value) 
-                    minSteps = i;
+                    minIndex = i;
                     }
                    }
 
-                    printf("\nThe date and time of the fewest steps: %s, %s\n", Fitnessdata[i].date, Fitnessdata[i].time);
+                    printf("\nThe date and time of the fewest steps: %s, %s\n", Fitnessdata[minIndex].date, Fitnessdata[minIndex].time);
 
+                 }
                     
-                    }
                     break;
                  
             
@@ -154,7 +155,8 @@ int main() {
     return 0;
     
 }
-    }
+}
+    
     
 
 
