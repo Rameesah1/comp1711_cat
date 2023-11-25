@@ -48,10 +48,10 @@ int main() {
 
 
     while (1) {   
-        printf("\nA. Specify the filename to be imported – you need to check that the file opened correctly\n");
+        printf("A. Specify the filename to be imported – you need to check that the file opened correctly\n");
         printf("B. Display the total number of records in the file\n"); 
         printf("C. Find the date and time of the timeslot with the fewest steps\n");
-        // ... (other menu options) ...
+        // ... (other menu options) ...  */
         printf("Q. Exit the menu\n");
         printf("Enter choice: ");
         scanf(" %c", &choice); // The space before %c tells scanf to ignore any whitespaces
@@ -61,7 +61,7 @@ int main() {
             case 'A': { // Braces to create a new scope for the case
                 char filename[20];
                 printf("Enter file name:\n");
-                scanf(" %20s", filename); // Use a space before %99s to ignore any leading whitespace
+                scanf(" %99s", filename); // Use a space before %99s to ignore any leading whitespace
                 
                 value = strcmp(filename, actualfilename) ;
                 if (value == 0) {
@@ -73,14 +73,13 @@ int main() {
                     printf("File opened successfully\n");
                     printf("File successfully loaded\n");
                     fclose(file); // Close the file if it's opened successfully
+                
                 }
-                }
-                else { 
+                }   else { 
                     printf("Incorrect file name entered\n");
 
                 }
-                
-
+        
                 break; // Break out of the switch case
             }
 
@@ -117,8 +116,8 @@ int main() {
 
             case 'C': {
 
-                /*So you want the min  value of field- steps value but you want the date and time to be the output
-                e.g max steps */
+                //So you want the min  value of field- steps value but you want the date and time to be the output
+                //e.g max steps 
                  if (records > 0) {
                  int minSteps = Fitnessdata[0].steps;   
                  int minIndex = 0;
@@ -138,24 +137,24 @@ int main() {
                     
                     break;
                  
-            
-            
-    
-    
-                
-    
+        
         
             //other cases..
-            case 'Q': {
+            case 'Q': 
                 printf("Exiting\n");
                 return 0; // Exits the program
+            
             }
-        }
-        }
-    return 0;
     
+    return 0;
+        }
+    void tokeniseRecord(const char *input, const char *delimiter,
+                    char *date, char *time, char *steps) {
+
 }
+    }
 }
+
     
     
 
