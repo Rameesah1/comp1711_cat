@@ -52,6 +52,7 @@ int main() {
         printf("B. Display the total number of records in the file\n"); 
         printf("C. Find the date and time of the timeslot with the fewest steps\n");
         printf("D. Find the data and time of the timeslot with the largest number of steps\n"); //2023-09-01,16:15,1100
+        printf("E. Find the mean step count of all the records in the file\n");
         // ... (other menu options) ...  */
         printf("Q. Exit the menu\n");
         printf("Enter choice: ");
@@ -158,6 +159,23 @@ int main() {
                     
                     break;
                 
+            case 'E': {
+
+                    double sum = 0;
+                    int i = 0;
+
+                    for(int i = 0; i < records; i++) {
+
+                        sum = sum + Fitnessdata[i].steps;
+                    }
+                        printf("Total sum of steps in the records: %f\n", sum);
+
+
+                      break;
+                }
+
+
+            
             
         
         
