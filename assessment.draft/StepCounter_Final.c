@@ -51,6 +51,7 @@ int main() {
         printf("A. Specify the filename to be imported – you need to check that the file opened correctly\n");
         printf("B. Display the total number of records in the file\n"); 
         printf("C. Find the date and time of the timeslot with the fewest steps\n");
+        printf("D. Find the data and time of the timeslot with the largest number of steps\n"); //2023-09-01,16:15,1100
         // ... (other menu options) ...  */
         printf("Q. Exit the menu\n");
         printf("Enter choice: ");
@@ -131,17 +132,38 @@ int main() {
                     }
                    }
 
-                    printf("\nThe date and time of the fewest steps: %s, %s\n", Fitnessdata[minIndex].date, Fitnessdata[minIndex].time);
+                    printf("The date and time of the fewest steps: %s, %s\n", Fitnessdata[minIndex].date, Fitnessdata[minIndex].time);
 
                  }
                     
                     break;
                  
+            case 'D' : {
+                if (records > 0) {
+                 int maxSteps = Fitnessdata[0].steps;   
+                 int maxIndex = 0;
+                 
+
+                    //for (i = 0; i < records; i++) {
+                   for (int i = 1; i < records; i++) {    
+                    if(maxSteps < Fitnessdata[i].steps) {   //then make array get new value so
+                    maxSteps = Fitnessdata[i].steps;  //(updates the value) 
+                    maxIndex = i;
+                    }
+                   }
+
+                    printf("The date and time of the maximum steps: %s, %s\n", Fitnessdata[maxIndex].date, Fitnessdata[maxIndex].time);
+
+                 }
+                    
+                    break;
+                
+            
         
         
             //other cases..
             case 'Q': 
-                printf("Exiting\n");
+                printf("\nExiting\n");
                 return 0; // Exits the program
             
             }
@@ -152,6 +174,7 @@ int main() {
 
 }
     
+}
 }
 
     
