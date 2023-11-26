@@ -162,14 +162,17 @@ int main() {
             case 'E': {
 
                     double sum = 0;
-                    int i = 0;
+                    int aveSteps = 0;
+                    int i = 0; 
 
                     for(int i = 0; i < records; i++) {
 
                         sum = sum + Fitnessdata[i].steps;
+                        aveSteps = sum / records;
                     }
-                        printf("Total sum of steps in the records: %f\n", sum);
-
+                       // printf("Total sum of steps in the records: %f\n", sum);
+                        printf("Total mean of steps in the records: %d\n", aveSteps);
+  
 
                       break;
                 }
