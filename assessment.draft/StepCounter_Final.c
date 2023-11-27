@@ -53,7 +53,7 @@ int main() {
         printf("C. Find the date and time of the timeslot with the fewest steps\n");
         printf("D. Find the data and time of the timeslot with the largest number of steps\n"); //2023-09-01,16:15,1100
         printf("E. Find the mean step count of all the records in the file\n");
-        // ... (other menu options) ...  */
+        printf("F. Find the longest continuous period where the step count is above 500 steps\n");
         printf("Q. Exit the menu\n");
         printf("Enter choice: ");
         scanf(" %c", &choice); // The space before %c tells scanf to ignore any whitespaces
@@ -175,6 +175,27 @@ int main() {
   
 
                       break;
+                }
+
+                case 'F': {
+                
+                for(int i = 0; i < records; i++) {
+
+                    if(Fitnessdata[i].steps > 500) {
+                        printf("%s, %s", Fitnessdata[i].time, Fitnessdata[i].date,);
+
+                    }
+
+                    } 
+                    break;
+                 
+
+                    
+                }
+
+
+
+
                 }
 
 
