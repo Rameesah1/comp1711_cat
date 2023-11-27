@@ -177,7 +177,7 @@ int main() {
                       break;
                 }
 
-                case 'F': 
+                case 'F': {
                 
                 for(int i = 0; i < records; i++) {
 
@@ -189,14 +189,7 @@ int main() {
                     } 
                     break;
                  
-
-                    
                 
-
-
-
-
-                }
 
 
             
@@ -216,6 +209,7 @@ int main() {
 
 }
     
+}
 }
 
 
