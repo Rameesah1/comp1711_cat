@@ -177,12 +177,12 @@ int main() {
                       break;
                 }
 
-                case 'F': {
+                case 'F': 
                 
                 for(int i = 0; i < records; i++) {
 
                     if(Fitnessdata[i].steps > 500) {
-                        printf("%s, %s", Fitnessdata[i].time, Fitnessdata[i].date,);
+                        printf("%s, %s\n", Fitnessdata[i].time, Fitnessdata[i].date);
 
                     }
 
@@ -191,7 +191,7 @@ int main() {
                  
 
                     
-                }
+                
 
 
 
@@ -217,7 +217,7 @@ int main() {
 }
     
 }
-}
+
 
     
     
