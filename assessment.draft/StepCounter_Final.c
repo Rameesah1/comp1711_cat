@@ -177,7 +177,7 @@ int main() {
                       break;
                 }
 
-                case 'F': {
+               /* case 'F': {
 
                 startofDuration = 0;
                 endofDuration = 0;
@@ -196,12 +196,13 @@ int main() {
                        endofDuration = Fitnessdata[i].time;
                     }
 
-                    if (Fitnessdata[i].steps <= 500 || i < records) {
+                    if (Fitnessdata[i].steps <= 500 || i = = records - 1 ) {
                          if (currentDuration > longestDuration) {
                             longestDuration = currentDuration;  //update new value as this is the new longest duration
                             startofLong = startofDuration;
                             endofLong = endofDuration;
                          }
+                         startofDuration = 0;
                          currentDuration = 0; //for every loop start over the current duration.
                         }
                     }
@@ -213,6 +214,9 @@ int main() {
 
                     } 
                     break;
+                    */
+
+                
                  
                 
 
