@@ -178,11 +178,36 @@ int main() {
                 }
 
                 case 'F': {
-                
+
+                startofDuration = 0;
+                endofDuration = 0;
+                currentDuration = 0;
+                startofLong = 0;
+                endofLong = 0;
+                longestDuration = 0;
+
                 for(int i = 0; i < records; i++) {
 
-                    if(Fitnessdata[i].steps > 500) {
-                        printf("%s, %s\n", Fitnessdata[i].time, Fitnessdata[i].date);
+                    if(Fitnessdata[i].steps > 500) {   //if the steps are above 500 then if:   
+                       if (startofDuration == 0) { //if the start of the duration is 0 which means it had finished reading the steps from the condition above and ready to look for next one, or it hasn't found a record yet with this condition... then:
+                        currentDuration = Fitnessdata[i].time;  //then update the current duration to that current time read
+                       }
+                       currentDuration++;
+                       endofDuration = Fitnessdata[i].time;
+                    }
+
+                    if (Fitnessdata[i].steps <= 500 || i < records) {
+                         if (currentDuration > longestDuration) {
+                            longestDuration = currentDuration;  //update new value as this is the new longest duration
+                            startofLong = startofDuration;
+                            endofLong = endofDuration;
+                         }
+                         currentDuration = 0; //for every loop start over the current duration.
+                        }
+                    }
+
+
+                        printf("Start of longest period: %d, End of longest period %d\n", startofLong, endofLong);
 
                     }
 
@@ -210,6 +235,7 @@ int main() {
 }
     
 }
+    }
 }
 
 
