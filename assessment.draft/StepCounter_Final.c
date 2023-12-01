@@ -179,12 +179,12 @@ int main() {
 
                /* case 'F': {
 
-                startofDuration = 0;
-                endofDuration = 0;
-                currentDuration = 0;
-                startofLong = 0;
-                endofLong = 0;
-                longestDuration = 0;
+                int startofDuration = 0;
+                int endofDuration = 0;
+                int currentDuration = 0;
+                int startofLong = 0;
+                int endofLong = 0;
+                int longestDuration = 0;
 
                 for(int i = 0; i < records; i++) {
 
@@ -239,7 +239,7 @@ int main() {
 }
     
 }
-    }
+    
 }
 
 
