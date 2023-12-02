@@ -48,24 +48,33 @@ int main() {
 
 
     while (1) {   
+        printf("Menu options:\n");
         printf("A. Specify the filename to be imported – you need to check that the file opened correctly\n");
         printf("B. Display the total number of records in the file\n"); 
         printf("C. Find the date and time of the timeslot with the fewest steps\n");
         printf("D. Find the data and time of the timeslot with the largest number of steps\n"); //2023-09-01,16:15,1100
         printf("E. Find the mean step count of all the records in the file\n");
         printf("F. Find the longest continuous period where the step count is above 500 steps\n");
-        printf("Q. Exit the menu\n");
+        printf("Q. Quit the menu\n");
         printf("Enter choice: ");
         scanf(" %c", &choice); // The space before %c tells scanf to ignore any whitespaces
+
+        if (choice == 'A' || choice == 'B' || choice == 'C' || choice == 'D' || choice == 'E' || choice == 'F' || choice == 'Q') {
+
+         } else {
+            printf("Invalid choice. Please enter valid option from A to F or Q, in uppercase.\n");
+            continue; //this continues to the next iteration after the message has displayed
+         }
+
         while (getchar() != '\n'); // Clear the input buffer
   
         switch(choice) {
-            case 'A': { // Braces to create a new scope for the case
+            case 'A': {
                 char filename[20];
                 printf("Enter file name:\n");
-                scanf(" %99s", filename); // Use a space before %99s to ignore any leading whitespace
+                scanf(" %20s", filename); // Use a space before %99s to ignore any leading whitespace
                 
-                value = strcmp(filename, actualfilename) ;
+                value = strcmp(filename, actualfilename) ;  //first filename is the one user will enter/ second one is the actual one
                 if (value == 0) {
     
                 FILE *file = fopen(actualfilename, "r"); // Try to open the file for reading
@@ -177,7 +186,7 @@ int main() {
                       break;
                 }
 
-               /* case 'F': {
+                case 'F': {
 
                 int startofDuration = 0;
                 int endofDuration = 0;
