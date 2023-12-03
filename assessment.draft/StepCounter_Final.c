@@ -188,10 +188,10 @@ int main() {
 
                 case 'F': {
 
-                int startofDuration = 0;
+                int startofDuration = -1;
                 int endofDuration = 0;
                 int currentDuration = 0;
-                int startofLong = 0;
+                int startofLong = -1;
                 int endofLong = 0;
                 int longestDuration = 0;
 
@@ -203,9 +203,10 @@ int main() {
                        }
                        currentDuration++;
                        endofDuration = Fitnessdata[i].time;
-                    }
+                    }  
+                    else {
 
-                    if (Fitnessdata[i].steps <= 500 || i = = records - 1 ) {
+                    if (Fitnessdata[i].steps <= 500 || i == records - 1 ) {  //condition to check when the long period ends
                          if (currentDuration > longestDuration) {
                             longestDuration = currentDuration;  //update new value as this is the new longest duration
                             startofLong = startofDuration;
