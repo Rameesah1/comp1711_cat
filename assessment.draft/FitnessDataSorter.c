@@ -38,7 +38,7 @@ int main() {
     int records = 0;
    
 
-
+    for (filename == "FitnessData_2023.csv");
     while(1) {
     char filename[20];
                 printf("Enter file name:\n");
@@ -49,18 +49,24 @@ int main() {
     
                 FILE *file = fopen(actualfilename, "r"); // Try to open the file for reading
                 if (file == NULL) {
-                    printf("Error opening file"); // Use perror to print the error message
+                    printf("Error opening file"); // Use  to print the error message
                 } else {
                     printf("File opened successfully\n");
-                    printf("File successfully loaded\n");
                     fclose(file); // Close the file if it's opened successfully
                 
                 }
                 }   else { 
                     printf("Incorrect file name entered. Please try again\n");
 
-                }
+     
+               }
+
+    
     }
+               return 0;
+    }
+
+    /*}
     //to make the file in descending order of step count
 
        for (int i = 0; i < records; i++)
@@ -87,3 +93,4 @@ for (int i = 0; i < records; i++)
 
 return 0;
 }
+*/
