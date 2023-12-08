@@ -187,13 +187,13 @@ int main() {
                       break;
                 }
 
-               case 'F': {
+              /* case 'F': {
 
-                int startofDuration = 0;
-                int endofDuration = 0;
-                int currentDuration = 0;
-                int startofLong = 0;
-                int endofLong = 0;
+                int startofDuration = -1;
+                int endofDuration = -1;
+                //int currentDuration = 0;
+                int startofLong = -1;
+                int endofLong = -1;
                 int longestDuration = 0;
 
                 for(int i = 0; i < records; i++) {
@@ -207,7 +207,8 @@ int main() {
                     }  
                     else {
 
-                    if (Fitnessdata[i].steps <= 500 || i == records - 1 ) {  //condition to check when the long period ends
+                    if (startofDuration != 0 ) {  //condition to check when the long period ends
+                         currentDuration = endofDuration - startofDuration;
                          if (currentDuration > longestDuration) {
                             longestDuration = currentDuration;  //update new value as this is the new longest duration
                             startofLong = startofDuration;
@@ -219,13 +220,19 @@ int main() {
                 }
             }
         }
+        
 
-                        printf("Start of longest period: %d, End of longest period %d\n", startofLong, endofLong);
+                        printf("Start of longest period: %s, End of longest period %s\n", startofLong, endofLong);
 
                     }
 
                     } 
-                    break;
+                    break;  */
+                    
+
+                   
+
+
                     
 
                 
