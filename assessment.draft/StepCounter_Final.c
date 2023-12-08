@@ -187,23 +187,23 @@ int main() {
                       break;
                 }
 
-              /*  case 'F': {
+               case 'F': {
 
-                int startofDuration = -1;
+                int startofDuration = 0;
                 int endofDuration = 0;
                 int currentDuration = 0;
-                int startofLong = -1;
+                int startofLong = 0;
                 int endofLong = 0;
                 int longestDuration = 0;
 
                 for(int i = 0; i < records; i++) {
 
                     if(Fitnessdata[i].steps > 500) {   //if the steps are above 500 then if:   
-                       if (startofDuration == 0) { //if the start of the duration is 0 which means it had finished reading the steps from the condition above and ready to look for next one, or it hasn't found a record yet with this condition... then:
-                        currentDuration = Fitnessdata[i].time;  //then update the current duration to that current time read
+                       if (startofDuration == 0) { //if the start of the duration is still 0 which means it had finished reading the steps from the condition above and ready to look for next one, or it hasn't found a record yet with this condition... then:
+                        startofDuration = Fitnessdata[i].time;  //then update the current duration to that current time read
                        }
-                       currentDuration++;
                        endofDuration = Fitnessdata[i].time;
+                    
                     }  
                     else {
 
@@ -212,12 +212,13 @@ int main() {
                             longestDuration = currentDuration;  //update new value as this is the new longest duration
                             startofLong = startofDuration;
                             endofLong = endofDuration;
-                         }
-                         startofDuration = 0;
-                         currentDuration = 0; //for every loop start over the current duration.
-                        }
+                    
                     }
+                    startofDuration = 0;
 
+                }
+            }
+        }
 
                         printf("Start of longest period: %d, End of longest period %d\n", startofLong, endofLong);
 
@@ -225,7 +226,7 @@ int main() {
 
                     } 
                     break;
-                    */
+                    
 
                 
                  
