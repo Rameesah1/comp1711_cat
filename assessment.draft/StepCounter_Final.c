@@ -88,6 +88,7 @@ int main() {
                 }
                 }   else { 
                     printf("Incorrect file name entered\n");
+                    return 1;
 
                 }
         
@@ -95,7 +96,7 @@ int main() {
             }
 
             case 'B' :  {
-                //FITNESS_DATA Fitnessdata[60]; // Can store up to 60 records from the file
+                //FITNESS_DATA Fitnessdata[59]; // Can store up to 60 records from the file
                 char line_buffer[100];
                 char date[11], time[6], steps[10];
                 //int records=0;
@@ -176,7 +177,7 @@ int main() {
 
                     for(int i = 0; i < records; i++) {
 
-                        sum = sum + Fitnessdata[i].steps;
+                        sum = sum + Fitnessdata[i].steps;  
                         aveSteps = sum / records;
                     }
                        // printf("Total sum of steps in the records: %f\n", sum);
@@ -186,7 +187,7 @@ int main() {
                       break;
                 }
 
-                case 'F': {
+              /*  case 'F': {
 
                 int startofDuration = -1;
                 int endofDuration = 0;
