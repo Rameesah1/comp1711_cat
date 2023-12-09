@@ -187,7 +187,7 @@ int main() {
 
              case 'F': {
 
-                  int startofDuration = -1;  //the variables set to -1 represent the invalidity of the indexes as they have not started any period count yet
+                  int startofDuration = -1; 
                   int endofDuration = -1;
                   int startofLong = -1;
                   int endofLong = -1;
