@@ -41,9 +41,9 @@ void tokeniseRecord(const char *input, const char *delimiter,
 int main() {
     char choice;
     char actualfilename[21]= "FitnessData_2023.csv";
-    int value;  //will be used for strcmp function to check if the value is the same. 
-    FITNESS_DATA Fitnessdata[59];
-                                   // Global declaration of the Fitnessdata array
+    int value;  //will be used for strcmp function to check if the value of the filename characters is the same. 
+    FITNESS_DATA Fitnessdata[59]; 
+                                 
     int records = 0;
 
 
@@ -72,23 +72,23 @@ int main() {
             case 'A': {
                 char filename[20];
                 printf("Enter file name:\n");
-                scanf(" %20s", filename); // Use a space before %99s to ignore any leading whitespace
+                scanf(" %20s", filename); // Used a space before %20s to ignore any leading whitespace
                 
-                value = strcmp(filename, actualfilename) ;  //first filename is the one user will enter/ second one is the actual one
-                if (value == 0) {
+                value = strcmp(filename, actualfilename);   //first filename is the one user will enter/ second one is the actual one.      I based this on an idea I got from: https://www.geeksforgeeks.org/strcmp-in-c/
+                if (value == 0) {  //this checks if the value of the two filename strings are the same. I bases this on an idea from : 
+                                   //https://www.scaler.com/topics/c/string-comparison-in-c/
     
                 FILE *file = fopen(actualfilename, "r"); // Try to open the file for reading
                 if (file == NULL) {
-                    printf("Error opening file"); // Use perror to print the error message
+                    printf("Error opening file"); // error message if file doesn't open
                 } else {
-                    printf("File opened successfully\n");
                     printf("File successfully loaded\n");
                     fclose(file); // Close the file if it's opened successfully
                 
                 }
                 }   else { 
                     printf("Incorrect file name entered\n");
-                    return 1;
+                    return 1;  //exits the program if an incorrect file name is entered
 
                 }
         
@@ -96,14 +96,14 @@ int main() {
             }
 
             case 'B' :  {
-                //FITNESS_DATA Fitnessdata[59]; // Can store up to 60 records from the file
+        
                 char line_buffer[100];
                 char date[11], time[6], steps[10];
-                //int records=0;
+               
                 
                 FILE *file = fopen(actualfilename, "r"); 
                 if (file == NULL) {
-                printf("Error opening file\n"); // Use perror to print the error message
+                printf("Error opening file\n"); 
                 break;
                 }
 
@@ -121,15 +121,13 @@ int main() {
                 fclose(file);
 
         
-                printf("Total number of records: %d\n", records); 
+                printf("Total records: %d\n", records); 
     
                 }
                 break;
 
             case 'C': {
 
-                //So you want the min  value of field- steps value but you want the date and time to be the output
-                //e.g max steps 
                  if (records > 0) {
                  int minSteps = Fitnessdata[0].steps;   
                  int minIndex = 0;
@@ -137,8 +135,8 @@ int main() {
 
                     //for (i = 0; i < records; i++) {
                    for (int i = 1; i < records; i++) {    
-                    if(minSteps > Fitnessdata[i].steps) {   //then make array get new value so
-                    minSteps = Fitnessdata[i].steps;  //(updates the value) 
+                    if(minSteps > Fitnessdata[i].steps) {   
+                    minSteps = Fitnessdata[i].steps;  //(updates the value of minsteps) 
                     minIndex = i;
                     }
                    }
@@ -155,10 +153,9 @@ int main() {
                  int maxIndex = 0;
                  
 
-                    //for (i = 0; i < records; i++) {
                    for (int i = 1; i < records; i++) {    
-                    if(maxSteps < Fitnessdata[i].steps) {   //then make array get new value so
-                    maxSteps = Fitnessdata[i].steps;  //(updates the value) 
+                    if(maxSteps < Fitnessdata[i].steps) {   //I based this on an idea I got from: https://www.youtube.com/watch?v=9DJYGr2W5y8
+                    maxSteps = Fitnessdata[i].steps;  //updates the value 
                     maxIndex = i;
                     }
                    }
@@ -177,8 +174,9 @@ int main() {
 
                     for(int i = 0; i < records; i++) {
 
-                        sum = sum + Fitnessdata[i].steps;  
-                        aveSteps = sum / records;
+                        sum = sum + Fitnessdata[i].steps;       //I based this of an idea from:
+                        aveSteps = sum / records;               //https://www.youtube.com/watch?v=gCv170-cN_s    (Portfolio Courses)
+                                                               
                     }
                        // printf("Total sum of steps in the records: %f\n", sum);
                         printf("Mean step count: %d\n", aveSteps);
@@ -193,14 +191,14 @@ int main() {
                   int endofDuration = -1;
                   int startofLong = -1;
                   int endofLong = -1;
-                  int longestDuration = 0; //the current duration index variable will be 
-                  
+                  int longestDuration = 0; 
+                  //currentDuration variable us assigned later
 
                   for (int i = 0; i < records; i++) {
 
                   if (Fitnessdata[i].steps > 500) {
-                  if (startofDuration == -1) {
-                  startofDuration = i;
+                  if (startofDuration == -1) {   
+                  startofDuration = i;  //updates it to current index 
                      }
                      endofDuration = i;
 
@@ -218,14 +216,14 @@ int main() {
         }
     
     }
-    // Check if the last period is the longest and still ongoing
+
     if (startofDuration != -1) {
         int currentDuration = endofDuration - startofDuration;
         if (currentDuration > longestDuration) {
             longestDuration = currentDuration;
             startofLong = startofDuration;
-            endofLong = records - 1; //this checks for the last record (array indexes go from 0-59
-    }
+            endofLong = records - 1; //this checks for the last record (array indexes go from 0-59)
+    }    
 }
     if (startofLong != -1 && endofLong != -1) { //checks if it the start and end of the indexes are both valid is true, then: 
 
@@ -238,9 +236,7 @@ int main() {
     break;
     
     }
-        
-        
-            //other cases..
+    
             case 'Q': 
                 printf("\nExiting\n");
                 return 0; // Exits the program
