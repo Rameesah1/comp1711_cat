@@ -74,7 +74,7 @@ int main() {
                 printf("Enter file name:\n");
                 scanf(" %20s", filename); // Used a space before %20s to ignore any leading whitespace
                 
-                value = strcmp(filename, actualfilename);   //first filename is the one user will enter/ second one is the actual one.      I based this on an idea I got from: https://www.geeksforgeeks.org/strcmp-in-c/
+                value = strcmp(filename, actualfilename);  // https://www.geeksforgeeks.org/strcmp-in-c/
                 if (value == 0) {  //this checks if the value of the two filename strings are the same. I bases this on an idea from : 
                                    //https://www.scaler.com/topics/c/string-comparison-in-c/
     
@@ -107,7 +107,7 @@ int main() {
                 break;
                 }
 
-                while (fgets(line_buffer, sizeof(line_buffer), file) != NULL && records < 60) {   //sizeof(line_buffer) helps prevent buffer overflow- better than writing 100
+                while (fgets(line_buffer, sizeof(line_buffer), file) != NULL && records < 60) {   //sizeof(line_buffer) 
                 tokeniseRecord(line_buffer, "," , date, time, steps);
 
                 strcpy(Fitnessdata[records].date, date);
