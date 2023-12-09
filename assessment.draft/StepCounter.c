@@ -243,7 +243,6 @@ int main() {
     
             case 'Q': 
                 printf("\nExiting\n");
-                return 0; // Exits the program
             
             }
     
