@@ -41,7 +41,7 @@ void tokeniseRecord(const char *input, const char *delimiter,
 int main() {
     char choice;
     char actualfilename[21]= "FitnessData_2023.csv";
-    int value;  //will be used for strcmp function to check if the value of the filename characters is the same. 
+    int value;  //will be used for strcmp function to check if the value of the filename characters is the same
     FITNESS_DATA Fitnessdata[59]; 
                                  
     int records = 0;
@@ -63,7 +63,7 @@ int main() {
 
          } else {
             printf("Invalid choice. Please enter valid option from A to F or Q, in uppercase.\n");
-            continue; //this continues to the next iteration after the message has displayed
+            continue; //This continues to the next iteration after the message has been displayed
          }
 
         while (getchar() != '\n'); // Clear the input buffer
@@ -80,19 +80,19 @@ int main() {
     
                 FILE *file = fopen(actualfilename, "r"); // Try to open the file for reading
                 if (file == NULL) {
-                    printf("Error opening file"); // error message if file doesn't open
+                    printf("Error opening file"); // Error message if file doesn't open
                 } else {
                     printf("File successfully loaded\n");
-                    fclose(file); // Close the file if it's opened successfully
+                    fclose(file); // Closes the file if it's opened successfully
                 
                 }
                 }   else { 
                     printf("Incorrect file name entered\n");
-                    return 1;  //exits the program if an incorrect file name is entered
+                    return 1;  //Exits the program if an incorrect file name is entered
 
                 }
         
-                break; // Break out of the switch case
+                break; 
             }
 
             case 'B' :  {
@@ -113,7 +113,7 @@ int main() {
                 strcpy(Fitnessdata[records].date, date);
                 strcpy(Fitnessdata[records].time, time);
                 int intsteps;
-                intsteps = atoi(steps);  //converts the string- steps into an integer
+                intsteps = atoi(steps);  //converts the string - steps into an integer
                 Fitnessdata[records].steps = intsteps;  
 
                 records++;
@@ -136,7 +136,7 @@ int main() {
                     //for (i = 0; i < records; i++) {
                    for (int i = 1; i < records; i++) {    
                     if(minSteps > Fitnessdata[i].steps) {   
-                    minSteps = Fitnessdata[i].steps;  //(updates the value of minsteps) 
+                    minSteps = Fitnessdata[i].steps;  //Updates the value of minsteps
                     minIndex = i;
                     }
                    }
@@ -155,7 +155,7 @@ int main() {
 
                    for (int i = 1; i < records; i++) {    
                     if(maxSteps < Fitnessdata[i].steps) {   //I based this on an idea I got from: https://www.youtube.com/watch?v=9DJYGr2W5y8
-                    maxSteps = Fitnessdata[i].steps;  //updates the value 
+                    maxSteps = Fitnessdata[i].steps;  //Updates the value 
                     maxIndex = i;
                     }
                    }
@@ -192,13 +192,13 @@ int main() {
                   int startofLong = -1;
                   int endofLong = -1;
                   int longestDuration = 0; 
-                  //currentDuration variable us assigned later
+                  //currentDuration variable is assigned later
 
                   for (int i = 0; i < records; i++) {
 
                   if (Fitnessdata[i].steps > 500) {
                   if (startofDuration == -1) {   
-                  startofDuration = i;  //updates it to current index 
+                  startofDuration = i;  //Updates it to current index 
                      }
                      endofDuration = i;
 
@@ -209,9 +209,9 @@ int main() {
                    if (currentDuration > longestDuration) {
                     longestDuration = currentDuration;
                     startofLong = startofDuration;
-                    endofLong = i - 1; //because the index before that the condition is still true
+                    endofLong = i - 1; // - 1 because the index before that is when the condition is true
                 }
-                startofDuration = -1; //reset the loop
+                startofDuration = -1; //reset
             }
         }
     
@@ -222,7 +222,7 @@ int main() {
         if (currentDuration > longestDuration) {
             longestDuration = currentDuration;
             startofLong = startofDuration;
-            endofLong = records - 1; //this checks for the last record (array indexes go from 0-59)
+            endofLong = records - 1; //This checks for the last record (array indexes go from 0-59)
     }    
 }
     if (startofLong != -1 && endofLong != -1) { //checks if it the start and end of the indexes are both valid is true, then: 
