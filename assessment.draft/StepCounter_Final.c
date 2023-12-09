@@ -42,7 +42,7 @@ int main() {
     char choice;
     char actualfilename[21]= "FitnessData_2023.csv";
     int value;  //will be used for strcmp function to check if the value is the same. 
-    FITNESS_DATA Fitnessdata[60];
+    FITNESS_DATA Fitnessdata[59];
                                    // Global declaration of the Fitnessdata array
     int records = 0;
 
@@ -143,7 +143,7 @@ int main() {
                     }
                    }
 
-                    printf("The date and time of the fewest steps: %s, %s\n", Fitnessdata[minIndex].date, Fitnessdata[minIndex].time);
+                    printf("Fewest steps: %s %s\n", Fitnessdata[minIndex].date, Fitnessdata[minIndex].time);
 
                  }
                     
@@ -163,7 +163,7 @@ int main() {
                     }
                    }
 
-                    printf("The date and time of the maximum steps: %s, %s\n", Fitnessdata[maxIndex].date, Fitnessdata[maxIndex].time);
+                    printf("Largest Steps: %s %s\n", Fitnessdata[maxIndex].date, Fitnessdata[maxIndex].time);
 
                  }
                     
@@ -181,77 +181,63 @@ int main() {
                         aveSteps = sum / records;
                     }
                        // printf("Total sum of steps in the records: %f\n", sum);
-                        printf("Total mean of steps in the records: %d\n", aveSteps);
+                        printf("Mean step count: %d\n", aveSteps);
   
 
                       break;
                 }
 
-              case 'F': {
+             case 'F': {
 
-                int startofDuration = -1;
-                int endofDuration = -1;
-                int currentDuration = 0;
-                int startofLong = -1;
-                int endofLong = -1;
-                int longestDuration = 0;
+                  int startofDuration = -1;  //the variables set to -1 represent the invalidity of the indexes as they have not started any period count yet
+                  int endofDuration = -1;
+                  int startofLong = -1;
+                  int endofLong = -1;
+                  int longestDuration = 0; //the current duration index variable will be 
+                  
 
-                for(int i = 0; i < records; i++) {
+                  for (int i = 0; i < records; i++) {
 
-                    if(Fitnessdata[i].steps > 500) {   //if the steps are 
-                    if (startofDuration == -1) {
-                        startofDuration = i;
-                       }
-                       endofDuration = i;
-                    
-                    }  
-                    else {
+                  if (Fitnessdata[i].steps > 500) {
+                  if (startofDuration == -1) {
+                  startofDuration = i;
+                     }
+                     endofDuration = i;
 
-                    if (startofDuration != -1 ) 
-                         currentDuration = endofDuration - startofDuration;
-                         if (currentDuration > longestDuration) {
-                            longestDuration = currentDuration;  
-                            startofLong = startofDuration;
-                            endofLong = i - 1;
-                    
-                    }
-                    startofLong = -1;
-                    currentDuration = 0;
-                
-                    
+                  } else {
 
+                   if (startofDuration != -1) {
+                   int currentDuration = endofDuration - startofDuration;
+                   if (currentDuration > longestDuration) {
+                    longestDuration = currentDuration;
+                    startofLong = startofDuration;
+                    endofLong = i - 1; //because the index before that the condition is still true
                 }
+                startofDuration = -1; //reset the loop
             }
         }
-             if ( startofDuration != -1 && currentduration > longestDuration ) {
-                 startofLong = startofDuration;
-                 endofLong = records - 1;
-              }
-               
-        
-                if ( startofLong != -1 && endofLong != -1 ) {
-                        printf("Start of longest period: %s, End of longest period %s\n",
-                         Fitnessdata[startofLong].date, Fitnessdata[startofLong].time, Fitnessdata[endofLong].date, Fitnessdata[endofLong].time);
+    
+    }
+    // Check if the last period is the longest and still ongoing
+    if (startofDuration != -1) {
+        int currentDuration = endofDuration - startofDuration;
+        if (currentDuration > longestDuration) {
+            longestDuration = currentDuration;
+            startofLong = startofDuration;
+            endofLong = records - 1; //this checks for the last record (array indexes go from 0-59
+    }
+}
+    if (startofLong != -1 && endofLong != -1) { //checks if it the start and end of the indexes are both valid is true, then: 
 
-                    }
-
-                    } 
-                    break;
-
-                    
-
-                   
-
-
-                    
-
-                
-                 
-                
-
-
-            
-            
+        printf("Longest period start: %s %s\nLongest period end: %s %s\n", 
+        Fitnessdata[startofLong].date, Fitnessdata[startofLong].time,
+         Fitnessdata[endofLong].date, Fitnessdata[endofLong].time);
+    }
+    
+    }
+    break;
+    
+    }
         
         
             //other cases..
@@ -264,10 +250,17 @@ int main() {
     return 0;
         }
     
+            
 
 }
     
 }
+    
+
+    
+
+
+
     
 
 
