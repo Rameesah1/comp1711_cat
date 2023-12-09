@@ -42,7 +42,7 @@ int main() {
     char choice;
     char actualfilename[21]= "FitnessData_2023.csv";
     int value;  //will be used for strcmp function to check if the value of the filename characters is the same
-    FITNESS_DATA Fitnessdata[59]; 
+    FITNESS_DATA Fitnessdata[60]; 
                                  
     int records = 0;
 
@@ -178,6 +178,10 @@ int main() {
                         aveSteps = sum / records;               //https://www.youtube.com/watch?v=gCv170-cN_s    (Portfolio Courses)
                                                                
                     }
+                    if (records > 0) {
+                    aveSteps = (int)((sum / records) + 0.5);
+                    }
+                    
                        // printf("Total sum of steps in the records: %f\n", sum);
                         printf("Mean step count: %d\n", aveSteps);
   
