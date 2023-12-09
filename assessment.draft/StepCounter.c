@@ -71,7 +71,7 @@ int main() {
         switch(choice) {
             case 'A': {
                 char filename[20];
-                printf("Enter file name:\n");
+                printf("Input filename:\n");
                 scanf(" %20s", filename); // Used a space before %20s to ignore any leading whitespace
                 
                 value = strcmp(filename, actualfilename);  // https://www.geeksforgeeks.org/strcmp-in-c/
@@ -181,7 +181,7 @@ int main() {
                     if (records > 0) {
                     aveSteps = (int)((sum / records) + 0.5);
                     }
-                    
+
                        // printf("Total sum of steps in the records: %f\n", sum);
                         printf("Mean step count: %d\n", aveSteps);
   
