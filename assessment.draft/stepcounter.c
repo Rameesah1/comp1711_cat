@@ -34,7 +34,7 @@ void tokeniseRecord(const char *input, const char *delimiter, char *date, char *
 
 int main() {
     char choice;
-    FITNESS_DATA Fitnessdata[60];
+    FITNESS_DATA Fitnessdata[1000];
     int records = 0;
     
 
