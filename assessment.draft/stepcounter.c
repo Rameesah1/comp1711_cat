@@ -40,20 +40,20 @@ int main() {
 
     while (1) {
         printf("Menu options:\n");
-        printf("A. Specify the filename to be imported – you need to check that the file opened correctly\n");
-        printf("B. Display the total number of records in the file\n");
-        printf("C. Find the date and time of the timeslot with the fewest steps\n");
-        printf("D. Find the data and time of the timeslot with the largest number of steps\n");
-        printf("E. Find the mean step count of all the records in the file\n");
-        printf("F. Find the longest continuous period where the step count is above 500 steps\n");
-        printf("Q. Quit the menu\n");
+        printf("A: Specify the filename to be imported\n");
+        printf("B: Display the total number of records in the file\n");
+        printf("C: Find the date and time of the timeslot with the fewest steps\n");
+        printf("D: Find the date and time of the timeslot with the largest number of steps\n");
+        printf("E: Find the mean step count of all the records in the file\n");
+        printf("F: Find the longest continuous period where the step count is above 500 steps\n");
+        printf("Q: Quit\n");
         printf("Enter choice: ");
         scanf(" %c", &choice);
         choice = toupper(choice);
 
         if (choice == 'A' || choice == 'B' || choice == 'C' || choice == 'D' || choice == 'E' || choice == 'F' || choice == 'Q') {
         } else {
-            printf("Invalid choice. Please enter a valid option from A to F or Q, in uppercase.\n");
+            printf("Invalid choice.Try again.\n");
             continue;
         }
 
@@ -63,12 +63,15 @@ int main() {
             case 'A': {
                 char filename[21];
                 printf("Input filename:\n");
-                scanf(" %20s", filename);
+                scanf(" %s", filename);
 
                 FILE *file = fopen(filename, "r");
                 if (file == NULL) {
-                    printf("Error: could not open file\n");
+                    printf("Error. Could not find or open the file.\n");
                     return 1;
+
+                    } else {
+                    printf("File successfully loaded.\n");
                 }
 
                 char line_buffer[100];
