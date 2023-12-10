@@ -40,9 +40,9 @@ void tokeniseRecord(const char *input, const char *delimiter,
 // Complete the main function
 int main() {
     char choice;
-    char actualfilename[21]= "FitnessData_2023.csv";
-    int value;  //will be used for strcmp function to check if the value of the filename characters is the same
-    FITNESS_DATA Fitnessdata[60]; 
+    //char actualfilename[21]= "FitnessData_2023.csv";
+    //int value;  //will be used for strcmp function to check if the value of the filename characters is the same
+    FITNESS_DATA Fitnessdata[1000]; 
                                  
     int records = 0;
 
