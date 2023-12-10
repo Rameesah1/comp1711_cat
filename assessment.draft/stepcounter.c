@@ -4,6 +4,7 @@
 #include <ctype.h>
 #include "FitnessDataStruct.h"
 
+
 typedef struct {
     char date[11];
     char time[6];
@@ -35,6 +36,7 @@ int main() {
     char choice;
     FITNESS_DATA Fitnessdata[60];
     int records = 0;
+    
 
     while (1) {
         printf("Menu options:\n");
@@ -140,6 +142,8 @@ int main() {
                 break;
             }
 
+           
+
             case 'F': {
                 int startofDuration = -1; 
                 int endofDuration = -1;
@@ -174,6 +178,8 @@ int main() {
                         endofLong = records - 1;
                     }    
                 }
+        
+
 
                 if (startofLong != -1 && endofLong != -1) {
                     printf("Longest period start: %s %s\nLongest period end: %s %s\n", 
