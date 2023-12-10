@@ -3,13 +3,21 @@
 #include <string.h>
 #include <ctype.h>
 #include "FitnessDataStruct.h"
-
-
+#include <math.h>
+           
+               
 typedef struct {
     char date[11];
     char time[6];
     int steps;
-} TokenizedData;
+}
+    
+// int startofDuration = -1;
+// int currentDuration = 0;
+// int startofLong = -1;
+// int longestDuration = 0;   
+
+TokenizedData;
 
 void tokeniseRecord(const char *input, const char *delimiter, char *date, char *time, char *steps) {
     char *inputCopy = strdup(input);
@@ -32,11 +40,39 @@ void tokeniseRecord(const char *input, const char *delimiter, char *date, char *
     free(inputCopy);
 }
 
+int import_file(char *filename, FITNESS_DATA Fitnessdata[], int *records) {
+    FILE *file = fopen(filename, "r");
+    if (file == NULL) {
+        fprintf(stderr, "Error: Could not find or open the file.\n");
+        return 0;
+    }
+
+    char line_buffer[100];
+    char date[11], time[6], steps[10];
+    *records = 0;
+
+    while (*records < 1000 && fgets(line_buffer, sizeof(line_buffer), file) != NULL) {
+        tokeniseRecord(line_buffer, "," , date, time, steps);
+
+        strcpy(Fitnessdata[*records].date, date);
+        strcpy(Fitnessdata[*records].time, time);
+        Fitnessdata[*records].steps = atoi(steps);  
+        
+        (*records)++;
+    }
+
+    fclose(file);
+    return 1;
+}
+
+
 int main() {
+    char filename[21];
     char choice;
     FITNESS_DATA Fitnessdata[1000];
     int records = 0;
-    
+    int maxSteps;
+    int maxIndex;
 
     while (1) {
         printf("Menu options:\n");
@@ -56,25 +92,22 @@ int main() {
             printf("Invalid choice.Try again.\n");
             continue;
         }
-
         while (getchar() != '\n'); // Clear the input buffer
 
         switch(choice) {
-            case 'A': {
-                char filename[21];
-                printf("Input filename:\n");
-                scanf(" %s", filename);
 
-                FILE *file = fopen(filename, "r");
-                if (file == NULL) {
-                    printf("Error. Could not find or open the file.\n");
+    
+            case 'A': 
+                printf("Input filename: ");
+                scanf("%20s", filename);  // Limit input to 20 characters
+
+                if (!import_file(filename, Fitnessdata, &records)) {
                     return 1;
-
-                    } else {
-                    printf("File successfully loaded.\n");
                 }
+                break;
+                
 
-                char line_buffer[100];
+                /*char line_buffer[100];
                 char date[11], time[6], steps[10];
                 records = 0;
 
@@ -84,118 +117,115 @@ int main() {
                     strcpy(Fitnessdata[records].date, date);
                     strcpy(Fitnessdata[records].time, time);
                     Fitnessdata[records].steps = atoi(steps);  
-                    records++;
-                }
 
-                fclose(file);
-                break;
-            }
+                    (*records++); */
+                //}
 
-            case 'B' : 
-                printf("Total records: %d\n", records);
-                break;
+            //     fclose(file);
+            //     break;
+            // }
 
-            case 'C': {
-                if (records > 0) {
-                    int minSteps = Fitnessdata[0].steps;   
-                    int minIndex = 0;
+        case 'B' : 
+            printf("Total records: %d\n", records);
+	    break;
 
-                    for (int i = 1; i < records; i++) {    
-                        if(minSteps > Fitnessdata[i].steps) {   
-                            minSteps = Fitnessdata[i].steps;
-                            minIndex = i;
-                        }
+        case 'C': 
+            if (records > 0) {
+                int minSteps = Fitnessdata[0].steps;   
+                int minIndex = 0;
+
+                for (int i = 1; i < records; i++) {    
+                    if(minSteps > Fitnessdata[i].steps) {   
+                        minSteps = Fitnessdata[i].steps;
+                        minIndex = i;
                     }
-
-                    printf("Fewest steps: %s %s\n", Fitnessdata[minIndex].date, Fitnessdata[minIndex].time);
                 }
-                break;
+
+                printf("Fewest steps: %s %s\n", Fitnessdata[minIndex].date, Fitnessdata[minIndex].time);
             }
+            break;
+        
+        
+        case 'D' : 
+            maxSteps = Fitnessdata[0].steps;   
+            maxIndex = 0;
+
+            for (int i = 1; i < records; i++) {    
+                if(Fitnessdata[i].steps > maxSteps) {
+                    maxSteps = Fitnessdata[i].steps;
+                    maxIndex = i;
+                }
             
-            case 'D' : {
-                if (records > 0) {
-                    int maxSteps = Fitnessdata[0].steps;   
-                    int maxIndex = 0;
-
-                    for (int i = 1; i < records; i++) {    
-                        if(maxSteps < Fitnessdata[i].steps) {
-                            maxSteps = Fitnessdata[i].steps;
-                            maxIndex = i;
-                        }
-                    }
-
-                    printf("Largest Steps: %s %s\n", Fitnessdata[maxIndex].date, Fitnessdata[maxIndex].time);
-                }
-                break;
             }
-            
-            case 'E': {
-                double sum = 0;
-                int aveSteps = 0;
-
-                for (int i = 0; i < records; i++) {
-                    sum = sum + Fitnessdata[i].steps;
-                }
-
-                if (records > 0) {
-                    aveSteps = (int)((sum / records) + 0.5); //conversion/casting of double to int. addition of 0.5 to double, then truncation 
-                }
-
-                printf("Mean step count: %d\n", aveSteps);
-                break;
-            }
-
+            printf("Largest Steps: %s %s\n", Fitnessdata[maxIndex].date, Fitnessdata[maxIndex].time);
+            break;
+    
+    
+        case 'E': {
            
+            int sum = 0;
+            int aveSteps = 0;  // Declare aveSteps here
 
-            case 'F': {
-                int startofDuration = -1; 
-                int endofDuration = -1;
-                int startofLong = -1;
-                int endofLong = -1;
-                int longestDuration = 0; 
+            for (int i = 0; i < records; i++) {
+                sum += Fitnessdata[i].steps;
+            }
 
-                for (int i = 0; i < records; i++) {
-                    if (Fitnessdata[i].steps > 500) {
-                        if (startofDuration == -1) {   
-                            startofDuration = i;
-                        }
-                        endofDuration = i;
-                    } else {
-                        if (startofDuration != -1) {   //end of long period count 
-                            int currentDuration = endofDuration - startofDuration + 1;
-                            if (currentDuration > longestDuration) {
-                                longestDuration = currentDuration;
-                                startofLong = startofDuration;
-                                endofLong = i - 1; 
-                            }
-                            startofDuration = -1;
-                        }
-                    }
-                }
-                  
-                if (startofDuration != -1) {
-                    int currentDuration = endofDuration - startofDuration + 1;  
-                    if (currentDuration > longestDuration) {
-                        longestDuration = currentDuration;
-                        startofLong = startofDuration;
-                        endofLong = endofDuration;
-                    }    
-                }
+            if (records > 0) {
+                aveSteps = round((double)sum / records); // Properly rounded average
+            }
+
+            printf("Mean step count: %d\n", aveSteps);
+            break;
+            }
         
 
+           case 'F': {
+            int startofDuration = -1;
+            int currentDuration = 0;
+            int startofLong = -1;
+            int longestDuration = 0;
 
-                if (startofLong != -1 && endofLong != -1) {
-                    printf("Longest period start: %s %s\nLongest period end: %s %s\n", 
-                        Fitnessdata[startofLong].date, Fitnessdata[startofLong].time,
-                        Fitnessdata[endofLong].date, Fitnessdata[endofLong].time);
+            for (int i = 0; i < records; i++) {
+                if (Fitnessdata[i].steps > 500) {
+                    if (startofDuration == -1) {
+                        startofDuration = i;
+                    }
+                } else {
+                    if (startofDuration != -1) {
+                        currentDuration = i - startofDuration;
+                        if (currentDuration > longestDuration) {
+                            longestDuration = currentDuration;
+                            startofLong = startofDuration;
+                        }c
+                        startofDuration = -1;
+                    }
                 }
-                break;
             }
 
-            case 'Q': 
-                return 0;
+            // Check after the loop in case the longest period is at the end of the array
+            if (startofDuration != -1) {
+                currentDuration = records - startofDuration;
+                if (currentDuration > longestDuration) {
+                    longestDuration = currentDuration;
+                    startofLong = startofDuration;
+                }
+            }
+
+            if (startofLong != -1) {
+                printf("Longest period start: %s %s\n", 
+                    Fitnessdata[startofLong].date, Fitnessdata[startofLong].time);
+            }
+
+            break;
+        }
+
+                
+
+        case 'Q': 
+            return 0;
         }
     }
 
     return 0;
 }
+
