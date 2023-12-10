@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "FitnessDataStruct.h"
 
 // Struct moved to header file
@@ -40,7 +41,6 @@ void tokeniseRecord(const char *input, const char *delimiter,
 // Complete the main function
 int main() {
     char choice;
-    char actualfilename[21]= "FitnessData_2023.csv";
     FITNESS_DATA Fitnessdata[60]; 
                                  
     int records = 0;
@@ -57,15 +57,16 @@ int main() {
         printf("Q. Quit the menu\n");
         printf("Enter choice: ");
         scanf(" %c", &choice); // The space before %c tells scanf to ignore any whitespaces
+        choice = toupper(choice);
 
-       /* if (choice == 'A' || choice == 'B' || choice == 'C' || choice == 'D' || choice == 'E' || choice == 'F' || choice == 'Q') {
+        if (choice == 'A' || choice == 'B' || choice == 'C' || choice == 'D' || choice == 'E' || choice == 'F' || choice == 'Q') {
 
          } else {
             printf("Invalid choice. Please enter valid option from A to F or Q, in uppercase.\n");
             continue; //This continues to the next iteration after the message has been displayed
-         }   */
+         }
 
-        while (getchar() != '\n'); // Clear the input buffer  
+        while (getchar() != '\n'); // Clear the input buffer
   
         switch(choice) {
             case 'A': {
@@ -75,9 +76,8 @@ int main() {
 
                 FILE *file = fopen(filename, "r"); // Open user specified file
                 if (file == NULL) {
-                    printf("Error opening file\n");
+                    printf("Error: could not open file");
                     return 1;
-                    break;
                 }
 
                 char line_buffer[100];
@@ -94,14 +94,14 @@ int main() {
                 }
 
                 fclose(file);
-                printf("File successfully loaded\n");
                 break;
             }
 
-            case 'B' : {
+            case 'B' : 
+            
                 printf("Total records: %d\n", records);
                 break;
-            }
+            
 
             case 'C': {
 
@@ -221,8 +221,6 @@ int main() {
             case 'Q': 
                 return 0; // Exits the program
             
-            default : 
-               printf ("Invalid choice. Please enter valid option from A to F or Q, in uppercase.\n");
             }
     
     return 0;
@@ -231,4 +229,5 @@ int main() {
             
 
 }
+    
 }

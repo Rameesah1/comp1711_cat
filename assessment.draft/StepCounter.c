@@ -162,7 +162,6 @@ int main() {
                  int minIndex = 0;
                  
 
-                    //for (i = 0; i < records; i++) {
                    for (int i = 1; i < records; i++) {    
                     if(minSteps > Fitnessdata[i].steps) {   
                     minSteps = Fitnessdata[i].steps;  //Updates the value of minsteps
