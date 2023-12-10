@@ -12,11 +12,6 @@ typedef struct {
     int steps;
 }
     
-// int startofDuration = -1;
-// int currentDuration = 0;
-// int startofLong = -1;
-// int longestDuration = 0;   
-
 TokenizedData;
 
 void tokeniseRecord(const char *input, const char *delimiter, char *date, char *time, char *steps) {
@@ -100,7 +95,7 @@ int main() {
 
     
             case 'A': 
-                printf("Input filename: ");
+                printf("Input filename:\n ");
                 scanf("%20s", filename);  // Limit input to 20 characters
 
                 if (!import_file(filename, Fitnessdata, &records)) {
