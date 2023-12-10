@@ -159,7 +159,7 @@ int main() {
                         endofDuration = i;
                     } else {
                         if (startofDuration != -1) {
-                            int currentDuration = endofDuration - startofDuration;
+                            int currentDuration = endofDuration - startofDuration + 1;
                             if (currentDuration > longestDuration) {
                                 longestDuration = currentDuration;
                                 startofLong = startofDuration;
@@ -169,13 +169,13 @@ int main() {
                         }
                     }
                 }
-
+         
                 if (startofDuration != -1) {
-                    int currentDuration = endofDuration - startofDuration;
+                    int currentDuration = endofDuration - startofDuration + 1;
                     if (currentDuration > longestDuration) {
                         longestDuration = currentDuration;
                         startofLong = startofDuration;
-                        endofLong = records - 1;
+                        endofLong = endofDuration;
                     }    
                 }
         
