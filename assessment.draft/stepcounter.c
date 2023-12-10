@@ -135,7 +135,7 @@ int main() {
                 }
 
                 if (records > 0) {
-                    aveSteps = (int)((sum / records) + 0.5);
+                    aveSteps = (int)((sum / records) + 0.5); //conversion/casting of double to int. addition of 0.5 to double, then truncation 
                 }
 
                 printf("Mean step count: %d\n", aveSteps);
@@ -158,7 +158,7 @@ int main() {
                         }
                         endofDuration = i;
                     } else {
-                        if (startofDuration != -1) {
+                        if (startofDuration != -1) {   //end of long period count 
                             int currentDuration = endofDuration - startofDuration + 1;
                             if (currentDuration > longestDuration) {
                                 longestDuration = currentDuration;
@@ -169,9 +169,9 @@ int main() {
                         }
                     }
                 }
-         
+                  
                 if (startofDuration != -1) {
-                    int currentDuration = endofDuration - startofDuration + 1;
+                    int currentDuration = endofDuration - startofDuration + 1;  
                     if (currentDuration > longestDuration) {
                         longestDuration = currentDuration;
                         startofLong = startofDuration;
