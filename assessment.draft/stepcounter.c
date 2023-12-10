@@ -71,8 +71,10 @@ int main() {
     char choice;
     FITNESS_DATA Fitnessdata[1000];
     int records = 0;
-    int maxSteps;
-    int maxIndex;
+    int startofDuration;
+    int currentDuration;
+    int startofLong;
+    int longestDuration;
 
     while (1) {
         printf("Menu options:\n");
@@ -145,22 +147,21 @@ int main() {
             }
             break;
         
-        
         case 'D' : 
-            maxSteps = Fitnessdata[0].steps;   
-            maxIndex = 0;
+            if (records > 0) {
+                int maxSteps = Fitnessdata[0].steps;   
+                int maxIndex = 0;
 
-            for (int i = 1; i < records; i++) {    
-                if(Fitnessdata[i].steps > maxSteps) {
-                    maxSteps = Fitnessdata[i].steps;
-                    maxIndex = i;
+                for (int i = 1; i < records; i++) {    
+                    if(maxSteps < Fitnessdata[i].steps) {   
+                        maxSteps = Fitnessdata[i].steps;
+                        maxIndex = i;
+                    }
                 }
-            
+
+                printf("Largest steps: %s %s\n", Fitnessdata[maxIndex].date, Fitnessdata[maxIndex].time);
             }
-            printf("Largest Steps: %s %s\n", Fitnessdata[maxIndex].date, Fitnessdata[maxIndex].time);
             break;
-    
-    
         case 'E': {
            
             int sum = 0;
@@ -179,48 +180,43 @@ int main() {
             }
         
 
-           case 'F': {
-            int startofDuration = -1;
-            int currentDuration = 0;
-            int startofLong = -1;
-            int longestDuration = 0;
-
+        case 'F':
+            startofDuration = -1;
+            currentDuration = 0;
+            startofLong = -1;
+            longestDuration = 0;
             for (int i = 0; i < records; i++) {
                 if (Fitnessdata[i].steps > 500) {
                     if (startofDuration == -1) {
                         startofDuration = i;
                     }
+                    currentDuration++;
                 } else {
-                    if (startofDuration != -1) {
-                        currentDuration = i - startofDuration;
                         if (currentDuration > longestDuration) {
                             longestDuration = currentDuration;
                             startofLong = startofDuration;
-                        }c
+                        }
                         startofDuration = -1;
+                        currentDuration = 0;
                     }
                 }
-            }
+            
 
             // Check after the loop in case the longest period is at the end of the array
-            if (startofDuration != -1) {
-                currentDuration = records - startofDuration;
-                if (currentDuration > longestDuration) {
+            if (currentDuration > longestDuration) {
                     longestDuration = currentDuration;
                     startofLong = startofDuration;
                 }
-            }
 
             if (startofLong != -1) {
                 printf("Longest period start: %s %s\n", 
                     Fitnessdata[startofLong].date, Fitnessdata[startofLong].time);
+                printf("Longest period end: %s %s\n",  Fitnessdata[startofLong + longestDuration - 1].date, Fitnessdata[startofLong + longestDuration - 1].time);
+            } else{
+                printf("No period with step count above 500 found.\n");
             }
 
             break;
-        }
-
-                
-
         case 'Q': 
             return 0;
         }
