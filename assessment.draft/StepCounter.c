@@ -90,14 +90,8 @@ int main() {
                     printf("Incorrect file name entered\n");
                     return 1;  //Exits the program if an incorrect file name is entered
 
-                }
-        
-                break; 
-            }
 
-            case 'B' :  {
-        
-                char line_buffer[100];
+                    char line_buffer[100];
                 char date[11], time[6], steps[10];
                
                 
@@ -119,6 +113,41 @@ int main() {
                 records++;
                 }
                 fclose(file);
+
+                    
+
+
+
+
+                }
+        
+                break; 
+            }
+
+            case 'B' :  {
+        
+                /*char line_buffer[100];
+                char date[11], time[6], steps[10];
+               
+                
+                FILE *file = fopen(actualfilename, "r"); 
+                if (file == NULL) {
+                printf("Error opening file\n"); 
+                break;
+                }
+
+                while (fgets(line_buffer, sizeof(line_buffer), file) != NULL && records < 60) {   //sizeof(line_buffer) 
+                tokeniseRecord(line_buffer, "," , date, time, steps);
+
+                strcpy(Fitnessdata[records].date, date);
+                strcpy(Fitnessdata[records].time, time);
+                int intsteps;
+                intsteps = atoi(steps);  //converts the string - steps into an integer
+                Fitnessdata[records].steps = intsteps;  
+
+                records++;
+                }
+                fclose(file); */
 
         
                 printf("Total records: %d\n", records); 

@@ -1,36 +1,3 @@
-
-#include <stdio.h>
-
-void printArray(int a[][3] ){
-  for (size_t i = 0; i <= 1; ++i) {
-     for (size_t j = 0; j <= 2; ++j) {
-        printf("%d ", a[i][j]);
-     }
-     printf("\n"); // start new line of output 
-     }
-}
-
-int main() {
-  int array1[2][3] = {{1, 2, 3}, {4, 5, 6}};
-  printf("Values in array1 by row are:\n");
-  printArray(array1);
-
-  int array2[2][3] = {1, 2, 3, 4, 5};
-  printf("Values in array2 by row are:\n");
-  printArray(array2);
-
-
-  int array3[2][3] = {{1, 2}, {4}};
-  printf("Values in array3 by row are:\n");
-  printArray(array3);
-  
-  return 0;
-}
-
-
-
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -74,7 +41,6 @@ void tokeniseRecord(const char *input, const char *delimiter,
 int main() {
     char choice;
     char actualfilename[21]= "FitnessData_2023.csv";
-    int value;  //will be used for strcmp function to check if the value of the filename characters is the same
     FITNESS_DATA Fitnessdata[60]; 
                                  
     int records = 0;
@@ -92,14 +58,14 @@ int main() {
         printf("Enter choice: ");
         scanf(" %c", &choice); // The space before %c tells scanf to ignore any whitespaces
 
-        if (choice == 'A' || choice == 'B' || choice == 'C' || choice == 'D' || choice == 'E' || choice == 'F' || choice == 'Q') {
+       /* if (choice == 'A' || choice == 'B' || choice == 'C' || choice == 'D' || choice == 'E' || choice == 'F' || choice == 'Q') {
 
          } else {
             printf("Invalid choice. Please enter valid option from A to F or Q, in uppercase.\n");
             continue; //This continues to the next iteration after the message has been displayed
-         }
+         }   */
 
-        while (getchar() != '\n'); // Clear the input buffer
+        while (getchar() != '\n'); // Clear the input buffer  
   
         switch(choice) {
             case 'A': {
@@ -128,7 +94,7 @@ int main() {
                 }
 
                 fclose(file);
-                printf("File successfully loaded with %d records\n", records);
+                printf("File successfully loaded\n");
                 break;
             }
 
@@ -255,6 +221,8 @@ int main() {
             case 'Q': 
                 return 0; // Exits the program
             
+            default : 
+               printf ("Invalid choice. Please enter valid option from A to F or Q, in uppercase.\n");
             }
     
     return 0;
@@ -263,5 +231,4 @@ int main() {
             
 
 }
-    
 }
