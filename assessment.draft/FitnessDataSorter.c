@@ -8,7 +8,7 @@ typedef struct {
     char date[11];
     char time[6];
     int steps;
-} Fitnessdata;
+} Fitness_Data;
 
 
 
@@ -30,7 +30,7 @@ void tokeniseRecord(char *record, char delimiter, char *date, char *time, int *s
     }
 }
 
-    int import_file(char *filename, FITNESS_DATA Fitnessdata[], int *records) {
+    int import_file(char *filename, FITNESS_DATA, int *records) {
     FILE *file = fopen(filename, "r");
     if (file == NULL) {
         fprintf(stderr, "Error: Could not find or open the file.\n");
