@@ -56,7 +56,7 @@ int main() {
     strcpy(Fitnessdata[records].date, date);
     strcpy(Fitnessdata[records].time, time);
     int intsteps;
-    intsteps = atoi(steps);  //converts the string- steps into an integer
+    intsteps = atoi(steps);  //converts the string - steps into an integer
     Fitnessdata[records].steps = intsteps;  
 
     records++;
