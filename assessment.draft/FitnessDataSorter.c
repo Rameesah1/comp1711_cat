@@ -40,7 +40,7 @@ int importFile(char *filename, FITNESS_DATA Fitnessdata[], int *records) {
 
     while (*records < 1000 && fgets(line_buffer, sizeof(line_buffer), file) != NULL) {
       //  tokeniseRecord(line_buffer, ',', date, time, &steps); {
-            if (strrchr(line_buffer, ',') == NULL || steps == -1 ) {
+            if (strrchr(line_buffer, ',') == NULL || steps == -1 ) {  
                 printf("Incorrect file type. Must be a CSV file.\n");
                 return 0;
             }

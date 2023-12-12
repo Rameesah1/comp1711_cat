@@ -38,7 +38,7 @@ void tokeniseRecord(const char *input, const char *delimiter, char *date, char *
 int import_file(char *filename, FITNESS_DATA Fitnessdata[], int *records) {
     FILE *file = fopen(filename, "r");
     if (file == NULL) {
-        fprintf(stderr, "Error: Could not find or open the file.\n");
+        printf("Error: Could not find or open the file.\n");
         return 0;
     }
 
