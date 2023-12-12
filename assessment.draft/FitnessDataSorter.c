@@ -44,6 +44,11 @@ int importFile(char *filename, FITNESS_DATA Fitnessdata[], int *records) {
                 printf("Incorrect file type. Must be a CSV file.\n");
                 return 0;
             }
+            if (strlen(date) != 10 || strlen(time) != 5) {
+                printf("Incorrect data order or format in file.\n");
+                fclose(file);
+                return 0;
+            }
     
                 
         tokeniseRecord(line_buffer, ',', date, time, &steps);
