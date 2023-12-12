@@ -30,7 +30,7 @@ int importFile(char *filename, FITNESS_DATA Fitnessdata[], int *records) {
     FILE *file = fopen(filename, "r");
     if (file == NULL) {
         fprintf(stderr, "Error: Could not find or open the file.\n");
-        return 0;
+        return 1;
     }
 
     char line_buffer[100];
@@ -42,7 +42,7 @@ int importFile(char *filename, FITNESS_DATA Fitnessdata[], int *records) {
       //  tokeniseRecord(line_buffer, ',', date, time, &steps); {
             if (strrchr(line_buffer, ',') == NULL) {
                 printf("Incorrect file type. Must be a CSV file.\n");
-                return 0;
+                return 1;
             }
     
                 
@@ -57,8 +57,7 @@ int importFile(char *filename, FITNESS_DATA Fitnessdata[], int *records) {
 
     fclose(file);
     return 1;
-    }
-//function for TSV file output
+}
 
 
 // Function to sort the data using bubble sort
@@ -78,7 +77,7 @@ int tsvOutput(FITNESS_DATA Fitnessdata[], int records, const char *filename) {  
     if (file == NULL) {
         fprintf(stderr, "Error: Could not open the file for writing.\n");
         fclose(file);
-        return 0;
+        return 1;
     }
 
     for (int i = 0; i < records; i++) {
@@ -94,7 +93,7 @@ int main() {
     char inputFilename[100];
     char outputFilename[150];  
 
-    printf("Input CSV filename: ");
+    printf("Enter Filename: ");
     scanf("%s", inputFilename); 
 
     if (!importFile(inputFilename, Fitnessdata, &records)) {
