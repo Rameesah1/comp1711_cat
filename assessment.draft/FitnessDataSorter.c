@@ -29,8 +29,8 @@ void tokeniseRecord(char *record, char delimiter, char *date, char *time, int *s
 int importFile(char *filename, FITNESS_DATA Fitnessdata[], int *records) {
     FILE *file = fopen(filename, "r");
     if (file == NULL) {
-        fprintf(stderr, "Error: Could not find or open the file.\n");
-        return 1;
+        printf("Error: Could not find or open the file.\n");
+        return 0;
     }
 
     char line_buffer[100];
@@ -40,9 +40,9 @@ int importFile(char *filename, FITNESS_DATA Fitnessdata[], int *records) {
 
     while (*records < 1000 && fgets(line_buffer, sizeof(line_buffer), file) != NULL) {
       //  tokeniseRecord(line_buffer, ',', date, time, &steps); {
-            if (strrchr(line_buffer, ',') == NULL) {
+            if (strrchr(line_buffer, ',') == NULL || steps == -1 ) {
                 printf("Incorrect file type. Must be a CSV file.\n");
-                return 1;
+                return 0;
             }
     
                 
@@ -58,7 +58,7 @@ int importFile(char *filename, FITNESS_DATA Fitnessdata[], int *records) {
     fclose(file);
     return 1;
 }
-
+//printf("Error: Could not find or open the file.\n");
 
 // Function to sort the data using bubble sort
 void bubble_Sort(FITNESS_DATA Fitnessdata[], int records) {
@@ -76,7 +76,7 @@ int tsvOutput(FITNESS_DATA Fitnessdata[], int records, const char *filename) {  
     FILE *file = fopen(filename, "w");
     if (file == NULL) {
         fprintf(stderr, "Error: Could not open the file for writing.\n");
-        fclose(file);
+
         return 1;
     }
 
@@ -85,6 +85,7 @@ int tsvOutput(FITNESS_DATA Fitnessdata[], int records, const char *filename) {  
     }
 
     fclose(file);
+    return 0;
 }
 
 int main() {
